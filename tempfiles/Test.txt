@@ -1,0 +1,10 @@
+Git
+Perl
+PostgreSQL
+SQL
+JavaScript
+jQuery
+CSS
+Bootstrap
+PHP
+Yii
