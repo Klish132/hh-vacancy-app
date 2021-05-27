@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="/written" method="GET" id="vacancyForm">
+<form action="/submitted" method="GET" id="vacancyForm">
     <div>
         <label for="usernameField">Введите логин</label>
         <input name="usernameInput" id="usernameField"><br>
@@ -18,4 +18,12 @@
     </div>
 </form>
 </body>
+
+<script>
+function myFunc() {
+    var action_src = "/requests/user/" + document.getElementsByName("usernameInput")[0].value;
+    var your_form = document.getElementById("vacancyForm");
+    your_form.action = action_src ;
+}
+</script>
 </html>

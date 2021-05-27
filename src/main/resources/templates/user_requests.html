@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Requests</title>
+</head>
+<body>
+<form th:action="@{/requests/user/} + ${username} + @{/raw}">
+    <input type="submit" value="Check raw JSON" />
+</form>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th> Дата </th>
+        <th> Навыки </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${date_map.empty}">
+        <td colspan="2"> No user requests </td>
+    </tr>
+    <tr th:each="date : ${date_map}">
+        <td th:text="${date.key}"></td>
+        <td>
+            <th:block th:each="skill : ${date.value}">
+                <th:block th:text="${skill}">
+                </th:block>
+                <br>
+            </th:block>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

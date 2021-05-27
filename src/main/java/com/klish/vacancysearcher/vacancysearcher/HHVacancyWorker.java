@@ -16,24 +16,20 @@ import java.util.ArrayList;
 
 public class HHVacancyWorker {
 
-    public static ArrayList<String> getKeySkills(String region, String vacancy) throws Exception {
-        int vacancy_counter = 0;
+    public static Counter<String> getKeySkills(String region, String vacancy) throws Exception {
 
         ArrayList<String> id_array = getFromAllVacancies(region, vacancy).get(0);
 
         Counter<String> key_skills_counter = new Counter<>();
-        ArrayList<String> key_skills_array = new ArrayList<>();
 
         for (String id : id_array) {
             ArrayList<String> vacancy_key_skills_array = getFromOneVacancy(id);
             vacancy_key_skills_array.remove(0);
-            vacancy_counter++;
             for (String key_skill : vacancy_key_skills_array) {
                 key_skills_counter.add(key_skill);
-                key_skills_array.add(key_skill);
             }
         }
-        return key_skills_array;
+        return key_skills_counter;
     }
 
     private static ArrayList<ArrayList<String>> getFromAllVacancies(String region, String vacancy) throws Exception {
